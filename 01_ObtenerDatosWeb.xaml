@@ -1,0 +1,248 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Cnt01" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="nombreSal" Type="OutArgument(x:String)" />
+    <x:Property Name="fuenteDT" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1894,2567</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Cnt01_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Triggers</x:String>
+      <x:String>UiPath.Platform.Triggers</x:String>
+      <x:String>UiPath.Platform.Triggers.Scope</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Triggers</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>MiProceso.Core</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Cnt01" sap:VirtualizedContainerService.HintSize="546,2502" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="Salazar" Name="apellidosIn" />
+      <Variable x:TypeArguments="x:String" Default="William" Name="nombresIn" />
+      <Variable x:TypeArguments="x:String" Name="nombreFigura" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Utilizar Navegador Chrome: :: Guía Telefónica CNT EP ::" sap:VirtualizedContainerService.HintSize="484,2391" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="DebuggerApi" ScopeGuid="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Resolver Captcha" sap:VirtualizedContainerService.HintSize="450,2174" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Default="15.png" Name="nombrePng" />
+              <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="telefonosDT" />
+              <Variable x:TypeArguments="x:String" Name="variable1" />
+              <Variable x:TypeArguments="sd:DataTable" Name="ordenadoDT" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Clic 'Criterio de Búsqueda'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=0&amp;cmbcriterio=1" CVScreenId="ea14c115-99fb-43c7-9cee-8c0166248d64" CvTextArea="125, 385, 143, 13" CvTextArgument="Por Numero Telefonico" CvType="Text" DesignTimeRectangle="109, 375, 290, 34" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Por Número Telefónico'" FullSelectorArgument="&lt;webctrl tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' type='' class='form-control' aaname='' /&gt;" Guid="fe5b7b09-61c9-4940-8011-7f274657af72" InformativeScreenshot="3f449706eb418e16b8897b314f75c79b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="ea14c115-99fb-43c7-9cee-8c0166248d64" CvTextArea="107, 352, 144, 17" CvTextArgument="Criterio de Busqueda" CvType="Text" DesignTimeRectangle="109, 350, 142, 20" ElementType="Text" FriendlyName="'Criterio de Búsqueda'" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Criterio de Búsqueda' check:innerText='Criterio de Búsqueda' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Clic 'pane'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="0, 0, 290, 74" DesignTimeScaleFactor="1" FriendlyName="'pane'" FullSelectorArgument="&lt;ctrl role='pane' /&gt;" FuzzySelectorArgument="&lt;ctrl role='pane' automationid='' /&gt;" Guid="f0535a85-8ec6-4b5c-85cf-7c42d95bc2c8" InformativeScreenshot="4b3ded2bc4d27d611fd7e432a9909ef0.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' idx='*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Escribir en 'Apellidos'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Text="[apellidosIn.ToString]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=0&amp;cmbcriterio=3&amp;cmbprov2=17&amp;txtdueno=&amp;captchaSelection=" CVScreenId="d91abb98-6121-470d-a241-9f9d1ebae4db" CvElementArea="597, 495, 203, 37" CvType="InputBox" DesignTimeRectangle="599, 496, 200, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='text' tag='INPUT' class='form-control' aaname='' /&gt;" Guid="dc6065ce-0c34-45e9-9dee-9af9fc3041d9" InformativeScreenshot="13d67f1bfa1f068ab9380e37bbbbc887.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="d91abb98-6121-470d-a241-9f9d1ebae4db" CvTextArea="661, 474, 70, 16" CvTextArgument="Apellidos:" CvType="Text" DesignTimeRectangle="663, 471, 72, 20" ElementType="Text" FriendlyName="'Apellidos'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl aaname='Apellidos: ' tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Apellidos: ' type='' tag='LABEL' class='' check:innerText='Apellidos:' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Escribir en 'Nombres'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Text="[nombresIn.ToString]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=0&amp;cmbcriterio=3&amp;cmbprovincia=0&amp;txttelefono=&amp;captchaSelection=" DesignTimeRectangle="846, 496, 160, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl name='txtusuarionombre' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl name='txtusuarionombre' type='text' tag='INPUT' class='form-control' aaname='' /&gt;" Guid="fae4dbf7-e09a-4d56-878e-9b2a192a7785" InformativeScreenshot="2856e64c3822a2a85a079efba54cfd22.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="891, 471, 69, 20" ElementType="Text" FriendlyName="'Nombres'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl aaname='Nombres: ' tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Nombres: ' type='' tag='LABEL' class='' check:innerText='Nombres:' /&gt;" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NGetText DisplayName="Obtener texto 'reloj'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" TextString="[nombreSal]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=1&amp;cmbcriterio=3&amp;cmbprov2=17&amp;txtusuarioapellido=Salazar&amp;txtusuarionombre=William&amp;captchaSelection=" DesignTimeRectangle="109, 572, 30, 16" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'reloj'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='captchaText' /&gt;" Guid="67f631a2-e57c-4be3-95f7-a83e21fa9c1a" InformativeScreenshot="f2aab4d5b47cf6e5850aba515ac13dec.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="303, 642, 66, 34" ElementType="Button" FriendlyName="'Enviar'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='BUTTON' class='btn btn-primary' aaname='Enviar' check:innerText='Enviar' /&gt;" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Bandeja de mensajes" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[nombreSal]" />
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="01_1_ObtenerNombreImagen.xaml - Invocar archivo de flujo de trabajo" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="01_1_ObtenerNombreImagen.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="nombreEntrada">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="nombreSal" />
+                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="nombreImagenSalida">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="nombrePng" />
+                </OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Bandeja de mensajes" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[nombrePng]" />
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Clic 'IMG'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=1&amp;cmbcriterio=3&amp;cmbprov2=17&amp;txtusuarioapellido=Salazar&amp;txtusuarionombre=William&amp;captchaSelection=" DesignTimeRectangle="219, 610, 36, 36" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='IMG' src='../../lib/simpleCaptcha0.2/captchaImages/{0}' /&gt;&quot;, nombrePng)]" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='IMG' class='captchaImage' aaname='69868b0f3263fd078b69d6ac5f15403ee596151e' /&gt;" Guid="c8d9cfc3-0a86-4e9b-bf96-5bb508b1e826" ImageBase64="" InformativeScreenshot="1532d8e5fafc6ec52ec13cd1fdaad7e9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Clic 'Enviar'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=1&amp;cmbcriterio=3&amp;cmbprov2=17&amp;txtusuarioapellido=Salazar&amp;txtusuarionombre=William&amp;captchaSelection=a643f18167692e9f0b94fb50b426ad4d1fa9f233" CVScreenId="1e6809c2-9dfe-466a-bdf5-7033f34af976" CvElementArea="320, 589, 68, 37" CvTextArea="334, 600, 42, 13" CvTextArgument="Enviar" CvType="Button" DesignTimeRectangle="322, 590, 66, 34" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Enviar'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='BUTTON' class='btn btn-primary' aaname='Enviar' check:innerText='Enviar' /&gt;" Guid="351564b2-e8f8-4578-855a-f9bf720cb873" InformativeScreenshot="cebc208dfad5cbcb851a1149f75db5b7.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CVScreenId="1e6809c2-9dfe-466a-bdf5-7033f34af976" CvElementArea="630, 589, 74, 37" CvTextArea="644, 600, 48, 16" CvTextArgument="Limpiar" CvType="Button" DesignTimeRectangle="632, 590, 72, 34" ElementType="Button" FriendlyName="'Limpiar'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl aaname='Limpiar' tableRow='3' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Limpiar' type='' tag='BUTTON' class='btn btn-default' check:innerText='Limpiar' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[fuenteDT]" DisplayName="Extraer datos de tabla" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Telefono' ReferenceName='Column-0' ReferenceIdx='0'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Propietario' ReferenceName='Column-1' ReferenceIdx='1'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Direccion' ReferenceName='Column-2' ReferenceIdx='2'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Localidad' ReferenceName='Column-3' ReferenceIdx='3'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataNextLink' /&gt;&#xD;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='fulltext' /&gt;&lt;column name='Column-1' attr='fulltext' /&gt;&lt;column name='Column-2' attr='fulltext' /&gt;&lt;column name='Column-3' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
+              <uix:NExtractData.NextLink>
+                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?paginas=1&amp;cmbprov2=17&amp;cmbcriterio=3&amp;txtusuarioapellido=SALAZAR&amp;txtusuarionombre=&amp;hflagsubmit=1" CVScreenId="283e5888-c66a-4337-a299-40e205b63ba7" CvElementArea="959, 881, 16, 17" CvType="ArrowButton" DesignTimeRectangle="959, 883, 14, 14" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='IMG' class='' aaname='Ir Página Siguiente' /&gt;" Guid="e5dd9053-1edd-45a4-98e3-e24e5ffa6e7e" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CVScreenId="283e5888-c66a-4337-a299-40e205b63ba7" CvElementArea="976, 882, 17, 17" CvType="ArrowButton" DesignTimeRectangle="977, 883, 14, 14" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tag='TABLE' /&gt;&lt;webctrl aaname='Ir Fin' tableRow='1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Ir Fin' type='' tag='IMG' class='' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NExtractData.NextLink>
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="272, 346, 720, 531" DesignTimeScaleFactor="1" FriendlyName="':: DATOS'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tag='TABLE' /&gt;" Guid="7e7b6dfe-e3e9-43b3-9258-73f98f1dcdbf" InformativeScreenshot="b65cf20f30ebf2a2d0a4c568387ea893.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 892, 1032" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="7d4fbacb8bbe2a977bca0f83fd2fd846.jpg" Selector="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" Title=":: Guía Telefónica CNT EP ::" Url="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=0&amp;cmbcriterio=1" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

@@ -1,0 +1,140 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_03_OrdenarTabla" this:_03_OrdenarTabla.entradaDT="[new DataTable()]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="entradaDT" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="salidaDT" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1894,806</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_03_OrdenarTabla_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Team.Linq.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Team.Linq.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>MiProceso.Core</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_03_OrdenarTabla" sap:VirtualizedContainerService.HintSize="450,741" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Object" Name="objetoDatos" />
+      <Variable x:TypeArguments="x:String" Name="variable1" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="INICIA: QUITAR CABECERAS" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="string mensajeLog;&#xD;&#xA;try {&#xD;&#xA;&#x9;   // Copia estructura&#xD;&#xA;&#x9;&#x9;limpioDT = datosDT.Clone();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;// Quita cabecera&#xD;&#xA;&#x9;&#x9;for(int i = 3; i &lt; datosDT.Rows.Count; i++) {&#xD;&#xA;&#x9;&#x9;&#x9;DataRow fila = datosDT.Rows[i];&#xD;&#xA;&#x9;&#x9;&#x9;limpioDT.ImportRow(fila);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;mensajeLog=&quot;TERMINO QUITAR CABECERA&quot;;&#xD;&#xA;        System.Diagnostics.Trace.WriteLine(mensajeLog);&#xD;&#xA;} catch (Exception ex) {&#xD;&#xA;&#x9;&#x9;mensajeLog = &quot;ERROR: QUITAR CABECERA &quot; + ex.ToString();&#xD;&#xA;&#x9;    System.Diagnostics.Trace.WriteLine(mensajeLog);&#xD;&#xA;}&#xD;&#xA;" DisplayName="Quitar cabecera" sap:VirtualizedContainerService.HintSize="388,165" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="datosDT">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="entradaDT" />
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="limpioDT">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="salidaDT" />
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="INICIA: ORDENAMIENTO" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="string mensajeLog;&#xD;&#xA;try { &#xD;&#xA;&#x9; // ESTRUCTURA&#xD;&#xA;&#x9;  ordenadoDT = origenDT.Clone();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;   // ORDENAMIENTO&#xD;&#xA;&#x9;&#x9;List&lt;DataRow&gt; filas = origenDT.AsEnumerable().ToList();&#xD;&#xA;&#x9;&#x9;for(int i=0; i&lt; filas.Count-1; i++) {&#xD;&#xA;&#x9;&#x9;&#x9;for(int j=0; j&lt; filas.Count - i - 1; j++) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;string actual = filas[j][&quot;Localidad&quot;].ToString().Trim();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;string siguiente =  filas[j+1][&quot;Localidad&quot;].ToString().Trim();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (string.Compare(actual,siguiente)&gt;0) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;DataRow temp = filas[j];&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;filas[j] = filas[j+1];&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;filas[j+1] = temp;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;// CABECERA&#xD;&#xA;&#x9;&#x9;DataRow cabecera = ordenadoDT.NewRow();&#xD;&#xA;&#x9;&#x9;cabecera[0] = &quot;Telefono&quot;;&#xD;&#xA;&#x9;&#x9;cabecera[1] = &quot;Propietario&quot;;&#xD;&#xA;&#x9;&#x9;cabecera[2] = &quot;Direccion&quot;;&#xD;&#xA;&#x9;&#x9;cabecera[3] = &quot;Localidad&quot;;&#xD;&#xA;&#x9;&#x9;ordenadoDT.Rows.Add(cabecera);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;// ELEMENTOS&#xD;&#xA;&#x9;&#x9;for(int i=0; i&lt;filas.Count; i++) {&#xD;&#xA;&#x9;&#x9;&#x9;ordenadoDT.ImportRow(filas[i]);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;// TOTALIZA&#xD;&#xA;&#x9;&#x9;DataRow totaliza = ordenadoDT.NewRow();&#xD;&#xA;&#x9;&#x9;totaliza[0] = &quot;Cantidad de Registros&quot;;&#xD;&#xA;&#x9;&#x9;totaliza[1] = filas.Count();&#xD;&#xA;&#x9;&#x9;totaliza[2] = &quot;&quot;;&#xD;&#xA;&#x9;&#x9;totaliza[3] = &quot;&quot;;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;ordenadoDT.Rows.Add(totaliza);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;mensajeLog=&quot;TERMINO ORDENAR&quot;;&#xD;&#xA;&#x9;&#x9;System.Diagnostics.Trace.WriteLine(mensajeLog);&#xD;&#xA;&#xD;&#xA;} catch(Exception ex) {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;mensajeLog = &quot;ERROR: ORDENAR &quot; + ex.ToString();&#xD;&#xA;&#x9;    System.Diagnostics.Trace.WriteLine(mensajeLog);&#xD;&#xA;&#x9;&#xD;&#xA;}&#xD;&#xA;" DisplayName="Ordenar" sap:VirtualizedContainerService.HintSize="388,165" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="origenDT">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="salidaDT" />
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="ordenadoDT">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="salidaDT" />
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+  </Sequence>
+</Activity>
