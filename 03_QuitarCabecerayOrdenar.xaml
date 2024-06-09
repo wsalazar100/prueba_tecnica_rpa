@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1894,806</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>869,806</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_03_OrdenarTabla_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -102,6 +102,7 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>MiProceso.Core</AssemblyReference>
+      <AssemblyReference>MiProceso.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="_03_OrdenarTabla" sap:VirtualizedContainerService.HintSize="450,741" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -115,25 +116,17 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="INICIA: QUITAR CABECERAS" />
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="string mensajeLog;&#xD;&#xA;try {&#xD;&#xA;&#x9;   // Copia estructura&#xD;&#xA;&#x9;&#x9;limpioDT = datosDT.Clone();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;// Quita cabecera&#xD;&#xA;&#x9;&#x9;for(int i = 3; i &lt; datosDT.Rows.Count; i++) {&#xD;&#xA;&#x9;&#x9;&#x9;DataRow fila = datosDT.Rows[i];&#xD;&#xA;&#x9;&#x9;&#x9;limpioDT.ImportRow(fila);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;mensajeLog=&quot;TERMINO QUITAR CABECERA&quot;;&#xD;&#xA;        System.Diagnostics.Trace.WriteLine(mensajeLog);&#xD;&#xA;} catch (Exception ex) {&#xD;&#xA;&#x9;&#x9;mensajeLog = &quot;ERROR: QUITAR CABECERA &quot; + ex.ToString();&#xD;&#xA;&#x9;    System.Diagnostics.Trace.WriteLine(mensajeLog);&#xD;&#xA;}&#xD;&#xA;" DisplayName="Quitar cabecera" sap:VirtualizedContainerService.HintSize="388,165" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="string mensajeLog;&#xD;&#xA;try {&#xD;&#xA;&#x9;   // Copia estructura&#xD;&#xA;&#x9;&#x9;limpioDT = datosDT.Clone();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;// Quita cabecera&#xD;&#xA;&#x9;&#x9;for(int i = 3; i &lt; datosDT.Rows.Count; i++) {&#xD;&#xA;&#x9;&#x9;&#x9;DataRow fila = datosDT.Rows[i];&#xD;&#xA;&#x9;&#x9;&#x9;string telefono = fila[0].ToString();&#xD;&#xA;&#x9;&#x9;&#x9;bool siExcluya = false;&#xD;&#xA;&#x9;&#x9;&#x9;siExcluya =( telefono.Contains(&quot;::&quot;) || telefono.Contains(&quot;Nú&quot;)); &#xD;&#xA;&#x9;&#x9;&#x9;if (siExcluya==false) {&#xD;&#xA;&#x9;&#x9;&#x9;   limpioDT.ImportRow(fila);&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;mensajeLog=&quot;TERMINO QUITAR CABECERA&quot;;&#xD;&#xA;        System.Diagnostics.Trace.WriteLine(mensajeLog);&#xD;&#xA;} catch (Exception ex) {&#xD;&#xA;&#x9;&#x9;mensajeLog = &quot;ERROR: QUITAR CABECERA &quot; + ex.ToString();&#xD;&#xA;&#x9;    System.Diagnostics.Trace.WriteLine(mensajeLog);&#xD;&#xA;}&#xD;&#xA;" DisplayName="Quitar cabecera" sap:VirtualizedContainerService.HintSize="388,165" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
       <ui:InvokeCode.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="datosDT">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="entradaDT" />
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="limpioDT">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="salidaDT" />
-        </OutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="datosDT">[entradaDT]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="limpioDT">[salidaDT]</OutArgument>
       </ui:InvokeCode.Arguments>
     </ui:InvokeCode>
     <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="INICIA: ORDENAMIENTO" />
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="string mensajeLog;&#xD;&#xA;try { &#xD;&#xA;&#x9; // ESTRUCTURA&#xD;&#xA;&#x9;  ordenadoDT = origenDT.Clone();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;   // ORDENAMIENTO&#xD;&#xA;&#x9;&#x9;List&lt;DataRow&gt; filas = origenDT.AsEnumerable().ToList();&#xD;&#xA;&#x9;&#x9;for(int i=0; i&lt; filas.Count-1; i++) {&#xD;&#xA;&#x9;&#x9;&#x9;for(int j=0; j&lt; filas.Count - i - 1; j++) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;string actual = filas[j][&quot;Localidad&quot;].ToString().Trim();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;string siguiente =  filas[j+1][&quot;Localidad&quot;].ToString().Trim();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (string.Compare(actual,siguiente)&gt;0) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;DataRow temp = filas[j];&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;filas[j] = filas[j+1];&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;filas[j+1] = temp;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;// CABECERA&#xD;&#xA;&#x9;&#x9;DataRow cabecera = ordenadoDT.NewRow();&#xD;&#xA;&#x9;&#x9;cabecera[0] = &quot;Telefono&quot;;&#xD;&#xA;&#x9;&#x9;cabecera[1] = &quot;Propietario&quot;;&#xD;&#xA;&#x9;&#x9;cabecera[2] = &quot;Direccion&quot;;&#xD;&#xA;&#x9;&#x9;cabecera[3] = &quot;Localidad&quot;;&#xD;&#xA;&#x9;&#x9;ordenadoDT.Rows.Add(cabecera);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;// ELEMENTOS&#xD;&#xA;&#x9;&#x9;for(int i=0; i&lt;filas.Count; i++) {&#xD;&#xA;&#x9;&#x9;&#x9;ordenadoDT.ImportRow(filas[i]);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;// TOTALIZA&#xD;&#xA;&#x9;&#x9;DataRow totaliza = ordenadoDT.NewRow();&#xD;&#xA;&#x9;&#x9;totaliza[0] = &quot;Cantidad de Registros&quot;;&#xD;&#xA;&#x9;&#x9;totaliza[1] = filas.Count();&#xD;&#xA;&#x9;&#x9;totaliza[2] = &quot;&quot;;&#xD;&#xA;&#x9;&#x9;totaliza[3] = &quot;&quot;;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;ordenadoDT.Rows.Add(totaliza);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;mensajeLog=&quot;TERMINO ORDENAR&quot;;&#xD;&#xA;&#x9;&#x9;System.Diagnostics.Trace.WriteLine(mensajeLog);&#xD;&#xA;&#xD;&#xA;} catch(Exception ex) {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;mensajeLog = &quot;ERROR: ORDENAR &quot; + ex.ToString();&#xD;&#xA;&#x9;    System.Diagnostics.Trace.WriteLine(mensajeLog);&#xD;&#xA;&#x9;&#xD;&#xA;}&#xD;&#xA;" DisplayName="Ordenar" sap:VirtualizedContainerService.HintSize="388,165" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="string mensajeLog;&#xA;try { &#xA;&#x9; // ESTRUCTURA&#xA;&#x9;  ordenadoDT = origenDT.Clone();&#xA;&#x9;&#x9;&#xA;&#x9;   // ORDENAMIENTO&#xA;&#x9;&#x9;List&lt;DataRow&gt; filas = origenDT.AsEnumerable().ToList();&#xA;&#x9;&#x9;for(int i=0; i&lt; filas.Count-1; i++) {&#xA;&#x9;&#x9;&#x9;for(int j=0; j&lt; filas.Count - i - 1; j++) {&#xA;&#x9;&#x9;&#x9;&#x9;string actual = filas[j][&quot;Localidad&quot;].ToString().Trim();&#xA;&#x9;&#x9;&#x9;&#x9;string siguiente =  filas[j+1][&quot;Localidad&quot;].ToString().Trim();&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;if (string.Compare(actual,siguiente)&gt;0) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;DataRow temp = filas[j];&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;filas[j] = filas[j+1];&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;filas[j+1] = temp;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;// CABECERA&#xA;&#x9;&#x9;DataRow cabecera = ordenadoDT.NewRow();&#xA;&#x9;&#x9;cabecera[0] = &quot;Telefono&quot;;&#xA;&#x9;&#x9;cabecera[1] = &quot;Propietario&quot;;&#xA;&#x9;&#x9;cabecera[2] = &quot;Direccion&quot;;&#xA;&#x9;&#x9;cabecera[3] = &quot;Localidad&quot;;&#xA;&#x9;&#x9;ordenadoDT.Rows.Add(cabecera);&#xA;&#x9;&#x9;&#xA;&#xA;&#x9;&#x9;// ELEMENTOS&#xA;&#x9;&#x9;for(int i=0; i&lt;filas.Count; i++) {&#xA;&#x9;&#x9;&#x9;ordenadoDT.ImportRow(filas[i]);&#xA;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;// TOTALIZA&#xA;&#x9;&#x9;DataRow totaliza = ordenadoDT.NewRow();&#xA;&#x9;&#x9;totaliza[0] = &quot;Cantidad de Registros&quot;;&#xA;&#x9;&#x9;totaliza[1] = filas.Count();&#xA;&#x9;&#x9;totaliza[2] = &quot;&quot;;&#xA;&#x9;&#x9;totaliza[3] = &quot;&quot;;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;ordenadoDT.Rows.Add(totaliza);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;mensajeLog=&quot;TERMINO ORDENAR&quot;;&#xA;&#x9;&#x9;System.Diagnostics.Trace.WriteLine(mensajeLog);&#xA;&#xA;} catch(Exception ex) {&#xA;&#xA;&#x9;&#x9;mensajeLog = &quot;ERROR: ORDENAR &quot; + ex.ToString();&#xA;&#x9;    System.Diagnostics.Trace.WriteLine(mensajeLog);&#xA;&#x9;&#xA;}&#xA;" DisplayName="Ordenar" sap:VirtualizedContainerService.HintSize="388,165" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
       <ui:InvokeCode.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="origenDT">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="salidaDT" />
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="ordenadoDT">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="salidaDT" />
-        </OutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="origenDT">[salidaDT]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="ordenadoDT">[salidaDT]</OutArgument>
       </ui:InvokeCode.Arguments>
     </ui:InvokeCode>
   </Sequence>

@@ -1,12 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Cnt01" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="nombreSal" Type="OutArgument(x:String)" />
-    <x:Property Name="fuenteDT" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="fuenteDT" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1175,3042</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>536,2981</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Cnt01_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -118,7 +118,7 @@
       <AssemblyReference>MiProceso.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Cnt01" sap:VirtualizedContainerService.HintSize="546,2977" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Cnt01" sap:VirtualizedContainerService.HintSize="546,2916" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="Salazar" Name="apellidosIn" />
       <Variable x:TypeArguments="x:String" Default="William" Name="nombresIn" />
@@ -130,18 +130,25 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Utilizar Navegador Chrome: :: Guía Telefónica CNT EP ::" sap:VirtualizedContainerService.HintSize="484,2866" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="DebuggerApi" ScopeGuid="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Utilizar Navegador Chrome: :: Guía Telefónica CNT EP ::" sap:VirtualizedContainerService.HintSize="484,2805" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="DebuggerApi" ScopeGuid="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Resolver Captcha" sap:VirtualizedContainerService.HintSize="450,2645" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Resolver Captcha" sap:VirtualizedContainerService.HintSize="450,2588" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Default="15.png" Name="nombrePng" />
               <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="telefonosDT" />
               <Variable x:TypeArguments="sd:DataTable" Name="ordenadoDT" />
               <Variable x:TypeArguments="x:String" Name="provinciaIn" />
+              <Variable x:TypeArguments="x:String" Name="criterioBusquedad">
+                <Variable.Default>
+                  <Literal x:TypeArguments="x:String">Por Nombre</Literal>
+                </Variable.Default>
+              </Variable>
+              <Variable x:TypeArguments="x:String" Name="variable2" />
+              <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -181,6 +188,25 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InputDialog>
+            <uix:NSelectItem DisplayName="Seleccionar elemento 'Criterio de Búsqueda'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[criterioBusquedad]" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="4">
+                  <x:String>-- Seleccione un criterio de Búsqueda --</x:String>
+                  <x:String>Por Número Telefónico</x:String>
+                  <x:String>Por Razón Social</x:String>
+                  <x:String>Por Nombre</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=0&amp;cmbcriterio=1" CVScreenId="1690e5dd-f76a-4e95-b32b-fcf28d46db48" CvTextArea="86, 332, 144, 14" CvTextArgument="Por Numero Telefonico" CvType="Text" DesignTimeRectangle="70, 323, 290, 34" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Por Número Telefónico'" FullSelectorArgument="&lt;webctrl tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' type='' class='form-control' aaname='' /&gt;" Guid="ff6f8864-132d-4476-84f2-0f510a74a405" InformativeScreenshot="4d686ee9571f9fb00118d124b95b0f50.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CVScreenId="1690e5dd-f76a-4e95-b32b-fcf28d46db48" CvTextArea="69, 300, 143, 17" CvTextArgument="Criterio de Busqueda" CvType="Text" DesignTimeRectangle="70, 298, 142, 20" ElementType="Text" FriendlyName="'Criterio de Búsqueda'" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Criterio de Búsqueda' check:innerText='Criterio de Búsqueda' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
             <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Clic 'Criterio de Búsqueda Apellido'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=0&amp;cmbcriterio=1" CVScreenId="ea14c115-99fb-43c7-9cee-8c0166248d64" CvTextArea="125, 385, 143, 13" CvTextArgument="Por Numero Telefonico" CvType="Text" DesignTimeRectangle="109, 375, 290, 34" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Por Número Telefónico'" FullSelectorArgument="&lt;webctrl tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' type='' class='form-control' aaname='' /&gt;" Guid="fe5b7b09-61c9-4940-8011-7f274657af72" InformativeScreenshot="3f449706eb418e16b8897b314f75c79b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
@@ -208,28 +234,29 @@
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Clic 'Provincia'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
-              <uix:NClick.Target>
-                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=1&amp;cmbcriterio=3&amp;cmbprov2=17&amp;txtusuarioapellido=Salazar&amp;txtusuarionombre=&amp;captchaSelection=08f2b12d3468bb4d4eab94e41648421dd8618566" CVScreenId="de618bab-2199-43e8-a180-e7a283585395" CvTextArea="55, 254, 79, 13" CvTextArgument="PICHINCHA" CvType="Text" DesignTimeRectangle="39, 244, 290, 34" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'PICHINCHA'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SELECT' class='form-control' aaname='' /&gt;" Guid="c3c0fadb-218c-480a-9658-a0d359d0e679" InformativeScreenshot="f2b645d45f15dea48f5cdba00ce46ffb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+            <uix:NSelectItem DisplayName="Seleccionar elemento 'Provincia'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="[provinciaIn]" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="8">
+                  <x:String>-- Escoja una Provincia --</x:String>
+                  <x:String>02 - Pichincha, Sto. Domingo</x:String>
+                  <x:String>03 - Bolívar, Chimborazo, Cotopaxi, Tungurahua, Pastaza</x:String>
+                  <x:String>04 - Guayas, Santa Elena</x:String>
+                  <x:String>05 - Galápagos, Los Ríos, Manabí</x:String>
+                  <x:String>06 - Carchi, Esmeraldas, Imbabura, Napo, Orellana, Sucumbios</x:String>
+                  <x:String>07 - Azuay, Cañar, El Oro, Loja, Morona, Zamora</x:String>
+                  <x:String>Números Especiales</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=0&amp;cmbcriterio=1" CVScreenId="1690e5dd-f76a-4e95-b32b-fcf28d46db48" CvTextArea="85, 456, 160, 11" CvTextArgument="-- Escoja una Provincia --" CvType="Text" DesignTimeRectangle="70, 444, 290, 34" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'-- Escoja'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SELECT' class='form-control' aaname='' /&gt;" Guid="541bf6b3-f757-4de3-ac69-991b59ddd3ff" InformativeScreenshot="32f585ecc4a119043b8381a0f7bb1e91.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                      <uix:Target CVScreenId="de618bab-2199-43e8-a180-e7a283585395" CvTextArea="38, 222, 69, 13" CvTextArgument="Provincia:" CvType="Text" DesignTimeRectangle="39, 219, 72, 20" ElementType="Text" FriendlyName="'Provincia'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='LABEL' class='lselect' aaname='Provincia: ' check:innerText='Provincia:' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CVScreenId="1690e5dd-f76a-4e95-b32b-fcf28d46db48" CvTextArea="69, 422, 69, 13" CvTextArgument="Provincia:" CvType="Text" DesignTimeRectangle="70, 419, 72, 20" ElementType="Text" FriendlyName="'Provincia'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='LABEL' class='lselect' aaname='Provincia: ' check:innerText='Provincia:' /&gt;" SearchSteps="FuzzySelector, CV" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
-              </uix:NClick.Target>
-            </uix:NClick>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Escribir en 'Nombres'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Text="[nombresIn.ToString]" Version="V3">
-              <uix:NTypeInto.Target>
-                <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=0&amp;cmbcriterio=3&amp;cmbprovincia=0&amp;txttelefono=&amp;captchaSelection=" DesignTimeRectangle="846, 496, 160, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl name='txtusuarionombre' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl name='txtusuarionombre' type='text' tag='INPUT' class='form-control' aaname='' /&gt;" Guid="fae4dbf7-e09a-4d56-878e-9b2a192a7785" InformativeScreenshot="2856e64c3822a2a85a079efba54cfd22.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
-                  <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                      <uix:Target DesignTimeRectangle="891, 471, 69, 20" ElementType="Text" FriendlyName="'Nombres'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl aaname='Nombres: ' tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Nombres: ' type='' tag='LABEL' class='' check:innerText='Nombres:' /&gt;" SearchSteps="FuzzySelector" />
-                    </scg:List>
-                  </uix:TargetAnchorable.Anchors>
-                </uix:TargetAnchorable>
-              </uix:NTypeInto.Target>
-            </uix:NTypeInto>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
             <uix:NGetText DisplayName="Obtener texto 'reloj'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" TextString="[nombreSal]" Version="V3">
               <uix:NGetText.Target>
                 <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?hflagsubmit=1&amp;cmbcriterio=3&amp;cmbprov2=17&amp;txtusuarioapellido=Salazar&amp;txtusuarionombre=William&amp;captchaSelection=" DesignTimeRectangle="109, 572, 30, 16" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'reloj'" FullSelectorArgument="&lt;webctrl idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='captchaText' /&gt;" Guid="67f631a2-e57c-4be3-95f7-a83e21fa9c1a" InformativeScreenshot="f2aab4d5b47cf6e5850aba515ac13dec.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
@@ -265,7 +292,7 @@
                 </uix:TargetAnchorable>
               </uix:NClick.Target>
             </uix:NClick>
-            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[fuenteDT]" DisplayName="Extraer datos de tabla" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Telefono' ReferenceName='Column-0' ReferenceIdx='0'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Propietario' ReferenceName='Column-1' ReferenceIdx='1'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Direccion' ReferenceName='Column-2' ReferenceIdx='2'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Localidad' ReferenceName='Column-3' ReferenceIdx='3'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataNextLink' /&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='fulltext' /&gt;&lt;column name='Column-1' attr='fulltext' /&gt;&lt;column name='Column-2' attr='fulltext' /&gt;&lt;column name='Column-3' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
+            <uix:NExtractData ContinueOnError="True" DataTable="[fuenteDT]" DisplayName="Extraer datos de tabla" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Telefono' ReferenceName='Column-0' ReferenceIdx='0'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Propietario' ReferenceName='Column-1' ReferenceIdx='1'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Direccion' ReferenceName='Column-2' ReferenceIdx='2'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Localidad' ReferenceName='Column-3' ReferenceIdx='3'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataNextLink' /&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='fulltext' /&gt;&lt;column name='Column-1' attr='fulltext' /&gt;&lt;column name='Column-2' attr='fulltext' /&gt;&lt;column name='Column-3' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NExtractData_3" LimitExtractionTo="Page" MaximumResults="2" ScopeIdentifier="fe5d11eb-d207-4998-b1c3-609eb1426550" Version="V3">
               <uix:NExtractData.NextLink>
                 <uix:TargetAnchorable BrowserURL="https://micnt.com.ec/cntapp/guia104/php/guia_cntat.php?paginas=1&amp;cmbprov2=17&amp;cmbcriterio=3&amp;txtusuarioapellido=SALAZAR&amp;txtusuarionombre=&amp;hflagsubmit=1" CVScreenId="283e5888-c66a-4337-a299-40e205b63ba7" CvElementArea="959, 881, 16, 17" CvType="ArrowButton" DesignTimeRectangle="959, 883, 14, 14" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='IMG' class='' aaname='Ir Página Siguiente' /&gt;" Guid="e5dd9053-1edd-45a4-98e3-e24e5ffa6e7e" ScopeSelectorArgument="&lt;html app='chrome.exe' title=':: Guía Telefónica CNT EP ::' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
